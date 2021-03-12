@@ -4,7 +4,7 @@ var handleSearch = function handleSearch() {
   $("#search").on("click", function () {
     var value = $("#input")[0].value;
     var string = value.replace(" ", "&");
-    axios.get("https://cors-anywhere.herokuapp.com/http://www.omdbapi.com/", {
+    axios.get("https://cors-anywhere.herokuapp.com/omdbapi.com/", {
       params: {
         t: string,
         apikey: "5ea2fa4a",
