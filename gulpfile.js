@@ -171,7 +171,6 @@ function startTestServer() {
   watch("app/scripts/**/*.js", scripts);
   watch("test/spec/**/*.js", lintTest);
 }
-
 function startDistServer() {
   server.init({
     notify: false,
@@ -185,7 +184,6 @@ function startDistServer() {
     },
   });
 }
-
 let serve;
 if (isDev) {
   serve = series(clean, parallel(styles, scripts, fonts), startAppServer);
