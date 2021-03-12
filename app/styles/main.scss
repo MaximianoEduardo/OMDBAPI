@@ -1,0 +1,246 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body,
+.app {
+  background: #fafafa;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: auto;
+  max-width: 1130px;
+  margin: 0 auto;
+}
+
+header,
+footer {
+  display: flex;
+  height: 100px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background: #121212;
+  -webkit-box-shadow: 0px 6px 12px 0px #33333371;
+  box-shadow: 0px 6px 12px 0px #33333371;
+}
+
+footer {
+  position: fixed;
+  bottom: -40px;
+}
+
+header {
+  img {
+    margin: 0 auto;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 15px;
+  margin: 50px 0 80px;
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #6e6e6e;
+    width: 175px;
+    height: 40px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: capitalize;
+    margin-top: 15px;
+    transition: 3000ms all ease-in;
+    &:hover {
+      background: #6e6e6e9c;
+    }
+  }
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 810px;
+    margin: 50px auto 0;
+    h1 {
+      font-size: 20px;
+      color: #333;
+      margin: 0;
+      font-weight: 300;
+      text-align: center;
+    }
+    p {
+      margin-top: 20px;
+      display: inline-block;
+      font-size: 16px;
+    }
+  }
+  &__search {
+    display: flex;
+    width: 100%;
+    max-width: 810px;
+    justify-content: space-between;
+    margin: 45px auto 0;
+    flex-wrap: wrap;
+    input {
+      border: 2px solid #6e6e6e;
+      width: auto;
+      min-width: 365px;
+      height: 45px;
+      padding-left: 15px;
+      width: 100%;
+    }
+  }
+
+  .movieLoading {
+    display: none;
+    width: 100%;
+    height: 64px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    background: url(../images/loading.svg) no-repeat center;
+    &.loading {
+      display: flex;
+    }
+  }
+
+  .movie {
+    display: none;
+    width: 100%;
+    height: auto;
+    min-height: 410px;
+    margin-top: 73px;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+
+    &.done {
+      display: flex;
+    }
+    &__description {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: auto;
+      margin-top: 20px;
+      .title {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        h2 {
+          display: flex;
+          justify-content: flex-start;
+          font-size: 37px;
+          color: #333;
+          font-weight: 600;
+        }
+        p {
+          margin-top: 20px;
+          display: inline-block;
+          font-size: 16px;
+        }
+      }
+      .infos {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start;
+        margin-top: 45px;
+        .infoWrapper {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          width: 100%;
+          margin-top: 10px;
+          span {
+            font-size: 16px;
+            color: #000;
+            font-weight: 600;
+          }
+          p {
+            display: inline-block;
+            font-size: 16px;
+            margin: 0;
+            padding-left: 25px;
+          }
+        }
+      }
+    }
+    &__image {
+      display: flex;
+      height: auto;
+      width: 100%;
+      img {
+        margin: 0 auto;
+      }
+    }
+    &.notFound {
+      width: 100%;
+      height: 115px;
+      background: url(../images/movie-notFound.svg) no-repeat center;
+      background-size: contain;
+
+      .infos {
+        display: none;
+      }
+
+      .movie__image {
+        display: none;
+      }
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    flex-wrap: nowrap;
+
+    .button {
+      margin: 0;
+    }
+
+    &__search {
+      flex-wrap: unset;
+      input {
+        width: auto;
+      }
+      .buttons {
+        margin-top: 0;
+      }
+    }
+
+    .movie {
+      flex-wrap: nowrap;
+      flex-direction: row;
+      &__description {
+        width: 70%;
+        margin-right: 70px;
+        margin-top: 0;
+      }
+      &__image {
+        width: 30%;
+        img {
+          margin: 0 auto;
+        }
+      }
+      .button {
+        margin-top: 20px;
+      }
+    }
+  }
+}
