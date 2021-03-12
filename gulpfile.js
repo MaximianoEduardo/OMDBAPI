@@ -31,7 +31,7 @@ function styles() {
     )
     .pipe($.postcss([autoprefixer()]))
     .pipe(
-      dest(".tmp/styles", {
+      dest(".dist/styles", {
         sourcemaps: !isProd,
       })
     )
@@ -45,7 +45,7 @@ function scripts() {
     .pipe($.plumber())
     .pipe($.babel())
     .pipe(
-      dest(".tmp/scripts", {
+      dest(".dist/scripts", {
         sourcemaps: !isProd ? "." : false,
       })
     )
