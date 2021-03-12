@@ -21,6 +21,7 @@ var handleSearch = function handleSearch() {
       }) : setTimeout(function () {
         $(".movieLoading").removeClass("loading");
         $(".movie .description").remove("notFound");
+        $(".movie").addClass("done");
         var title = data.Title;
         var plot = data.Plot;
         var actor = data.Actors;
