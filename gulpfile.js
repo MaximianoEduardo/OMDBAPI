@@ -31,7 +31,7 @@ function styles() {
     )
     .pipe($.postcss([autoprefixer()]))
     .pipe(
-      dest(".dist/styles", {
+      dest(".tmp/styles", {
         sourcemaps: !isProd,
       })
     )
@@ -45,7 +45,7 @@ function scripts() {
     .pipe($.plumber())
     .pipe($.babel())
     .pipe(
-      dest(".dist/scripts", {
+      dest(".tmp/scripts", {
         sourcemaps: !isProd ? "." : false,
       })
     )
@@ -179,6 +179,7 @@ function startDistServer() {
     server: {
       baseDir: "dist",
       routes: {
+        "/scripts": ".tmp/scripts",
         "/node_modules": "node_modules",
       },
     },

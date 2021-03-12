@@ -1,46 +1,46 @@
 const handleSearch = () => {
-  $("#search").on("click", function () {
-    let value = $("#input")[0].value;
+  $('#search').on('click', function () {
+    let value = $('#input')[0].value;
 
-    let string = value.replace(" ", "&");
+    let string = value.replace(' ', '&');
 
     axios
-      .get("http://www.omdbapi.com/", {
+      .get('http://www.omdbapi.com/', {
         params: {
           t: string,
-          apikey: "5ea2fa4a",
-          plot: "full",
+          apikey: '5ea2fa4a',
+          plot: 'full',
         },
       })
       .then((response) => {
-        $(".movieLoading").addClass("loading");
+        $('.movieLoading').addClass('loading');
         const data = response.data;
 
         data.Response === false
           ? setTimeout(() => {
-              $(".movieLoading").removeClass("loading");
-              $(".movie").addClass("done");
+              $('.movieLoading').removeClass('loading');
+              $('.movie').addClass('done');
 
-              $(".movie .title h2").text("Filme não entrado");
+              $('.movie .title h2').text('Filme não entrado');
 
-              $(".movie").addClass("notFound");
+              $('.movie').addClass('notFound');
             })
           : setTimeout(() => {
-              $(".movieLoading").removeClass("loading");
-              $(".movie .description").remove("notFound");
+              $('.movieLoading').removeClass('loading');
+              $('.movie .description').remove('notFound');
 
               let title = data.Title;
               let plot = data.Plot;
               let actor = data.Actors;
               let poster = data.Poster;
 
-              $(".movie .title h2").text(`${title}`);
+              $('.movie .title h2').text(`${title}`);
 
-              $(".movie .description p").text(`${plot}`);
+              $('.movie .description p').text(`${plot}`);
 
-              $(".movie .infos #Actor p").text(`${actor}`);
+              $('.movie .infos #Actor p').text(`${actor}`);
 
-              $("#image").attr("src", poster);
+              $('#image').attr('src', poster);
             }, 1000 * 3);
 
         console.log(response);
@@ -49,11 +49,11 @@ const handleSearch = () => {
 };
 
 const handleClear = () => {
-  $("#reset").on("click", function () {
-    $(".movie").removeClass("done");
+  $('#reset').on('click', function () {
+    $('.movie').removeClass('done');
   });
 };
 
-$(window).on("load", function () {
+$(window).on('load', function () {
   handleSearch();
 });

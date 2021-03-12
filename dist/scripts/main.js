@@ -44,4 +44,3 @@ var handleClear = function handleClear() {
 $(window).on("load", function () {
   handleSearch();
 });
-//# sourceMappingURL=main.js.map
